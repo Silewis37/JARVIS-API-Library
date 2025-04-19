@@ -96,8 +96,8 @@ class Github:
         f.write(data4)
         f.close()
     
-    def RepoForks(self, Owner, Repo, filePath):
-      url = f"https://api.github.com/repos/{Owner}/{Repo}/forks"
+    def RepoTagsList(self, Owner, Repo, filePath):
+      url = f"https://api.github.com/repos/{Owner}/{Repo}/tags"
       h = {
       "Accept": "application/vnd.github+json",
       "Authorization": f"Bearer {self.token}",
@@ -109,9 +109,66 @@ class Github:
         data4 = json.dumps(response.json(), indent=4)
         f.write(data4)
         f.close()
+    
+    def RepoTagsList(self, Owner, Repo, filePath):
+      url = f"https://api.github.com/repos/{Owner}/{Repo}/tags"
+      h = {
+      "Accept": "application/vnd.github+json",
+      "Authorization": f"Bearer {self.token}",
+      "X-GitHub-Api-Version": "2022-11-28"
+      }
+      response = requests.get(url, headers=h)
+      print(response.json())
+      with open(filePath, "w+") as f:
+        data4 = json.dumps(response.json(), indent=4)
+        f.write(data4)
+        f.close()
+
   class User:
     def UserStarredList(self, filePath):
       url = f"https://api.github.com/user/starred"
+      h = {
+      "Accept": "application/vnd.github+json",
+      "Authorization": f"Bearer {self.token}",
+      "X-GitHub-Api-Version": "2022-11-28"
+      }
+      response = requests.get(url, headers=h)
+      print(response.json())
+      with open(filePath, "w+") as f:
+        data4 = json.dumps(response.json(), indent=4)
+        f.write(data4)
+        f.close()
+    
+    def UserFollowersList(self, filePath):
+      url = f"https://api.github.com/user/followers"
+      h = {
+      "Accept": "application/vnd.github+json",
+      "Authorization": f"Bearer {self.token}",
+      "X-GitHub-Api-Version": "2022-11-28"
+      }
+      response = requests.get(url, headers=h)
+      print(response.json())
+      with open(filePath, "w+") as f:
+        data4 = json.dumps(response.json(), indent=4)
+        f.write(data4)
+        f.close()
+        
+    def UserFollowingList(self, filePath):
+      url = f"https://api.github.com/user/following"
+      h = {
+      "Accept": "application/vnd.github+json",
+      "Authorization": f"Bearer {self.token}",
+      "X-GitHub-Api-Version": "2022-11-28"
+      }
+      response = requests.get(url, headers=h)
+      print(response.json())
+      with open(filePath, "w+") as f:
+        data4 = json.dumps(response.json(), indent=4)
+        f.write(data4)
+        f.close()
+        
+    def UserRepositoryList(self, username,filePath):
+      url = f"https://api.github.com/users/{username}/repos"
       h = {
       "Accept": "application/vnd.github+json",
       "Authorization": f"Bearer {self.token}",
