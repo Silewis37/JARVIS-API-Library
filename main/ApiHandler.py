@@ -110,8 +110,36 @@ class Github:
         f.write(data4)
         f.close()
     
-    def RepoTagsList(self, Owner, Repo, filePath):
-      url = f"https://api.github.com/repos/{Owner}/{Repo}/tags"
+    def RepoIssuesList(self, Owner, Repo, filePath):
+      url = f"https://api.github.com/repos/{Owner}/{Repo}/issues/events"
+      h = {
+      "Accept": "application/vnd.github+json",
+      "Authorization": f"Bearer {self.token}",
+      "X-GitHub-Api-Version": "2022-11-28"
+      }
+      response = requests.get(url, headers=h)
+      print(response.json())
+      with open(filePath, "w+") as f:
+        data4 = json.dumps(response.json(), indent=4)
+        f.write(data4)
+        f.close()
+        
+    def RepoCollaboratorsList(self, Owner, Repo, filePath):
+      url = f"https://api.github.com/repos/{Owner}/{Repo}/collaborators"
+      h = {
+      "Accept": "application/vnd.github+json",
+      "Authorization": f"Bearer {self.token}",
+      "X-GitHub-Api-Version": "2022-11-28"
+      }
+      response = requests.get(url, headers=h)
+      print(response.json())
+      with open(filePath, "w+") as f:
+        data4 = json.dumps(response.json(), indent=4)
+        f.write(data4)
+        f.close()
+    
+    def RepoReleasesList(self, Owner, Repo, filePath):
+      url = f"https://api.github.com/repos/{Owner}/{Repo}/releases"
       h = {
       "Accept": "application/vnd.github+json",
       "Authorization": f"Bearer {self.token}",
