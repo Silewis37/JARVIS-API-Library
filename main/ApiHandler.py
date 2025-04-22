@@ -208,3 +208,11 @@ class Github:
         data4 = json.dumps(response.json(), indent=4)
         f.write(data4)
         f.close()
+        
+class Nutritionix:
+  def __init__(self, app_id, app_token):
+    self.appId = app_id
+    self.appToken = app_token
+    pass
+  
+  

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="jarvis_api_library",
-    version="1.1.2",
+    version="1.3.0",
     packages=find_packages(),
     install_requires=[
         "requests>=2.32.3",
