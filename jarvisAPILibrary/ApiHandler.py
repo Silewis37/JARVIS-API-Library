@@ -10,8 +10,9 @@ class RequestPuller:
     print("RequestPuller initialized successfully.")
     pass 
   
-  def GET(url, filePath):
-    response = requests.get(url)
+  def GET(url, headers, filePath):
+    h = headers
+    response = requests.get(url, headers=h)
     with open(filePath, "w+") as f:
       json.dump(response.json(), f, indent=4)
 
